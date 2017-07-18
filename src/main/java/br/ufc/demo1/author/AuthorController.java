@@ -53,9 +53,4 @@ public class AuthorController {
         repository.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Deleted");
     }
-    //teste de bad request - ok
-    @RequestMapping(value="/bad", method = RequestMethod.GET)
-    public ResponseEntity<Void> badRequest(){
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
 }
