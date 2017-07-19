@@ -3,15 +3,24 @@ package br.ufc.demo1.pub;
 import br.ufc.demo1.author.Author;
 import br.ufc.demo1.publisher.Publisher;
 
+import javax.persistence.*;
+
 /**
  * Created by LuizI on 18/07/2017.
  */
+@Entity(name = "publications")
 public class Pub {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column
     private String name;
+    @Column
     private Tipo tipo;
+    @ManyToOne
     private Author author;
-    private Publisher publisher;
+    @ManyToOne
+    Publisher publisher;
 
     public  Pub(){};
 
@@ -63,4 +72,6 @@ public class Pub {
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
+
+
 }

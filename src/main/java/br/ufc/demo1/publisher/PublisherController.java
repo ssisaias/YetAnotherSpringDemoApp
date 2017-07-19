@@ -49,7 +49,7 @@ public class PublisherController {
 
     @RequestMapping(value="/{id}",method = RequestMethod.PUT)
     public ResponseEntity<Publisher> updatePublisher(@PathVariable int id, @RequestBody Publisher publisher){
-        if(publisherRepository.update(id, publisher)==null){
+        if(publisherRepository.save(publisher)==null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(publisher);

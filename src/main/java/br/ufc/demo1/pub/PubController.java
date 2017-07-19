@@ -46,7 +46,7 @@ public class PubController {
 
     @RequestMapping(value="/{id}",method = RequestMethod.PUT)
     public ResponseEntity<Pub> updatePub(@PathVariable int id, @RequestBody Pub publisher){
-        if(pubRepository.update(id, publisher)==null){
+        if(pubRepository.save(publisher)==null){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(publisher);

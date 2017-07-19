@@ -1,13 +1,29 @@
 package br.ufc.demo1.publisher;
 
+import br.ufc.demo1.pub.Pub;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Collection;
+
 /**
  * Created by LuizI on 18/07/2017.
  */
+@Entity(name = "publisher")
 public class Publisher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column
     private String name;
+    @Column
     private String website;
+    @Column
     private String description;
+
+    @OneToMany(mappedBy = "publisher")
+    @JsonIgnore
+    private Collection<Pub> publications;
 
     public Publisher(){
 
@@ -50,5 +66,14 @@ public class Publisher {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    public Collection<Pub> getPublications() {
+        return publications;
+    }
+
+    public void setPublications(Collection<Pub> publications) {
+        this.publications = publications;
     }
 }
